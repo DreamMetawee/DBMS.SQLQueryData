@@ -29,18 +29,33 @@ namespace DBMS.SQLQueilyData
         private void Form1_Load(object sender, EventArgs e)
         {
             connect();
-            showData();
-         ///
+            showData("select * from Products");
+
         }
 
-        private void showData()
+        private void showData(string sql)
         {
-            string sql = "select * from Products";
+            //string sql = "select * from Products";
             da = new SqlDataAdapter(sql, conn);
             DataSet ds = new DataSet();
             da.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            showData("select EmployeeID,Title+FirstName+' '+LastName EmpName,Position from Employees");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            showData("select * from Categories");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            showData("select * from Products");
         }
     }
 }
