@@ -30,7 +30,7 @@ namespace DBMS.SQLQueilyData
         {
             connect();
             showData();
-         
+         ///
         }
 
         private void showData()
