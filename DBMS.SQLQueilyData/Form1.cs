@@ -1,4 +1,4 @@
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using System.Data;
 namespace DBMS.SQLQueilyData
 {
@@ -14,6 +14,7 @@ namespace DBMS.SQLQueilyData
 
         private void connect()
         {
+            //เชื่อมต่อ database
             string servar = @"DESKTOP-BR15INT\sqlexpress";
             string db = "Minimart";
             string strCon = string.Format(@"Data Source={0};Initial Catalog={1};" + "Integrated Security=True;Encrypt=False", servar, db);
@@ -29,12 +30,13 @@ namespace DBMS.SQLQueilyData
         private void Form1_Load(object sender, EventArgs e)
         {
             connect();
-            showData("select * from Products");
+            showData("select * from Products");//นำข้อมูลมา show
 
         }
 
         private void showData(string sql)
         {
+            //ข้อมูลจากฐานข้อมูล
             //string sql = "select * from Products";
             da = new SqlDataAdapter(sql, conn);
             DataSet ds = new DataSet();
@@ -45,16 +47,19 @@ namespace DBMS.SQLQueilyData
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //ปุ่มกดดึงข้อมูลจากฐานข้อมูล
             showData("select EmployeeID,Title+FirstName+' '+LastName EmpName,Position from Employees");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //ปุ่มกดดึงข้อมูลจากฐานข้อมูล
             showData("select * from Categories");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //ปุ่มกดดึงข้อมูลจากฐานข้อมูล
             showData("select * from Products");
         }
     }
